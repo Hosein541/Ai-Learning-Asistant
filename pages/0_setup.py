@@ -112,6 +112,9 @@ if st.button(
             settings
     )
 
+if settings["is_processed"] == True :
+    st.success("Now your session is ready.")
+
 
 def reset_session():
 
