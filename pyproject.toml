@@ -1,0 +1,37 @@
+[project]
+name = "Flashcard-generator"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Hosein541", email = "huseinmohammadi83@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "docling>=0.1.0",
+    "pillow>=0.1.0",
+    "pymupdf (>=1.27.2.3,<2.0.0.0)",
+    "pandas >= 0.1.0",
+    "numpy >= 0.1.0",
+    "langchain >= 0.1.0",
+    "langchain-core >= 0.1.0",
+    "langchain-community >= 0.1.0",
+    "langchain-ollama >= 0.1.0",
+    "ollama >= 0.1.0",
+    "chromadb >= 0.1.0",
+    "networkx >= 0.1.0",
+    "matplotlib >= 0.1.0",
+    "scikit-learn >= 0.1.0",
+    "tqdm >= 0.1.0",
+    "json-repair >= 0.1.0",
+    "huggingface-hub >= 0.1.0",
+    "langchain-openai>=0.1.0",
+    "langchain-google-genai >= 0.1.0",
+    "langchainhub>=0.1.0",
+    "langchain-text-splitters>=0.0.1",
+    "tiktoken>=0.5.0",
+    "streamlit>=0.1.0",
+]
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
