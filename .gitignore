@@ -5,6 +5,6 @@ __pycache__/
 venv/
 
 session/
-inputs/papers/
+inputs/papers
 outputs/
 vector_db/
