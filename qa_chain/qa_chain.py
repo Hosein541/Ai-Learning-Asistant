@@ -11,6 +11,10 @@ import sys
 import os 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import OUTPUT_DIR, UPLOADS_DIR, CHROMA_DIR
+from core.session_manager import (
+    load_settings,
+    save_settings
+)
 
 
 
@@ -21,7 +25,8 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 
 embedding_function = OllamaEmbeddings(
-    model="embeddinggemma"
+    model="embeddinggemma",
+    base_url="http://localhost:11434",  # default, change if needed
 )
 
 def load_json(path):
@@ -353,9 +358,9 @@ Table Content:
 
 def main( selected):
 
+    settings = load_settings()
 
-
-    db_name = "chroma_db"
+    db_name = settings["db_name"]
     persist_directory = os.path.join(
         CHROMA_DIR,
         db_name
@@ -365,17 +370,21 @@ def main( selected):
     # -------------------------------------
     # Load Existing DB
     # -------------------------------------
-
+    
     if os.path.exists(persist_directory):
 
         vectorstore = Chroma(
             persist_directory=persist_directory,
             embedding_function=embedding_function,
+            # collection_name = "my_collection"
         )
+        print(f"vector store is loaded {db_name}")
+
     else:
         splits = build_documents(
             OUTPUT_DIR
         )
+        print(f"vector store creating \t{db_name}")
         print(
             f"Total documents: {len(splits)}"
         )
@@ -383,6 +392,7 @@ def main( selected):
             documents=splits,
             embedding=embedding_function,
             persist_directory=persist_directory,
+            # collection_name = "my_collection"
         )
     retriever = vectorstore.as_retriever(search_kwargs={
         "k": 5,
@@ -390,24 +400,5 @@ def main( selected):
             "paper_id": selected
         }
     })
-
     
-    # prompt = ChatPromptTemplate.from_messages([
-    #     ("system", """You are an assistant for question-answering tasks.
-    # Use the following pieces of retrieved context to answer the question.
-    # If you don't know the answer, just say that you don't know.
-    # answer {language} in and keep it concise."""),
-    #     ("human", """Question: {question}
-
-    # Context: {context}
-
-    # Answer:""")
-    # ])
-
-    # qa_chain = (
-    #     {"context": retriever,"language": RunnablePassthrough(), "question":RunnablePassthrough()}
-    #     | prompt
-    #     | llm
-    # )
-
     return retriever

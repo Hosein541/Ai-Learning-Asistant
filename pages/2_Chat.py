@@ -70,7 +70,6 @@ def get_papers():
 
 
 
-# st.title("Library")
 
 papers = get_papers()
 
@@ -88,7 +87,6 @@ question = st.chat_input(
     "Ask a question..."
 )
 
-retriever = answer_question(selected)
 prompt = ChatPromptTemplate.from_messages([
     ("system", """You are an assistant for question-answering tasks.
 Use the following pieces of retrieved context to answer the question.
@@ -99,13 +97,17 @@ Context: {context}
 Answer:""")
 ])
 
-qa_chain = (
-    {"context": retriever,"language": RunnablePassthrough(), "question":RunnablePassthrough()}
-    | prompt
-    | llm
-)
+
+# del qa_chain
 
 if question:
+    retriever = answer_question(selected)
+    
+    qa_chain = (
+        {"context": retriever,"language": RunnablePassthrough(), "question":RunnablePassthrough()}
+        | prompt
+        | llm
+    )
 
     with st.chat_message(
         "user"
@@ -115,8 +117,12 @@ if question:
     answer = qa_chain.invoke(
         question
     )
-
+    # answer = "hello i am a human"
+    
     with st.chat_message(
         "assistant"
     ):
         st.write(answer.content[0]["text"])
+        # st.write(answer)
+
+        

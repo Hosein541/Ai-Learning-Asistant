@@ -11,6 +11,7 @@ DEFAULT_SETTINGS = {
     "google_api_key": "",
     "hf_token": "",
     "language": "English",
+    "db_name": "0",
     "is_processed": False,
 }
 
