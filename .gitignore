@@ -7,4 +7,4 @@ venv/
 session/
 inputs/papers/
 outputs/
-vectordb/
+vector_db/
