@@ -4,6 +4,10 @@ An AI-powered learning assistant for textbooks, lecture notes, and educational d
 
 The system automatically extracts educational content, generates hierarchical summaries, builds a searchable vector database, creates AI-generated flashcards for active recall, and enables question answering over uploaded learning materials through an interactive Streamlit interface.
 
+
+## Demo
+[🎥 Watch Demo](https://github.com/user-attachments/assets/25cfebc2-9b85-4d63-81a8-8bd57f06eb65)
+
 ---
 
 ## Features
