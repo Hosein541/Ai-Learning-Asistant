@@ -1,6 +1,7 @@
 import json
 import re
 from pathlib import Path
+import hashlib
 
 SUPPLEMENTARY_OFFSET = 1000
 
@@ -136,10 +137,8 @@ def parse_table_id(caption):
         return -1, label
 
 
-import hashlib
 
 
-import hashlib
 
 
 def remove_duplicate_tables(tables):
