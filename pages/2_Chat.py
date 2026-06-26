@@ -98,7 +98,6 @@ Answer:""")
 ])
 
 
-# del qa_chain
 
 if question:
     retriever = answer_question(selected)
@@ -117,12 +116,10 @@ if question:
     answer = qa_chain.invoke(
         question
     )
-    # answer = "hello i am a human"
     
     with st.chat_message(
         "assistant"
     ):
         st.write(answer.content[0]["text"])
-        # st.write(answer)
 
         
