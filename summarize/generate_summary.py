@@ -31,7 +31,6 @@ def extract_sections(md_text):
 
     sections = {}
 
-    # ---------- پیدا کردن Header ها ----------
 
     headers = []
 
@@ -86,7 +85,7 @@ def extract_sections(md_text):
 
             abstract_text = match.group(1).strip()
 
-    # ---------- سایر سکشن‌ها ----------
+    # ---------- Other sections ----------
 
     for i in range(1, len(headers)):
 
@@ -294,9 +293,7 @@ def create_summary_blocks(output):
     if not sections:
         return []
 
-    # --------------------------------------------------
-    # آیا سکشن شماره گذاری شده داریم؟
-    # --------------------------------------------------
+
 
     has_numbered_sections = any(
 
@@ -312,9 +309,6 @@ def create_summary_blocks(output):
         for section in sections
     )
 
-    # --------------------------------------------------
-    # مقاله بدون شماره گذاری
-    # --------------------------------------------------
 
     if not has_numbered_sections:
 
@@ -336,9 +330,7 @@ def create_summary_blocks(output):
             for section in sections
         ]
 
-    # --------------------------------------------------
-    # مقاله شماره گذاری شده
-    # --------------------------------------------------
+
 
     grouped_sections = defaultdict(list)
 
@@ -496,18 +488,7 @@ def section_summary(llm, summarization_blocks, summary_language):
                 # Extract the text from the AIMessage object
                 item['summary'] = item['summary'].content[0]['text']
 
-        # with open(
-        #     "section_summaries.json",
-        #     "w",
-        #     encoding="utf-8"
-        # ) as f:
 
-        #     json.dump(
-        #         section_summaries,
-        #         f,
-        #         indent=2,
-        #         ensure_ascii=False
-        #     )
     return section_summaries
     
 def final_summary(llm, section_summaries, summary_language):
@@ -603,7 +584,6 @@ def main(llm, language):
                 indent=2,
                 ensure_ascii=False
             )
-        # continue
         section_summaries=section_summary(llm, summarization_blocks, language)
 
         all_summaries_text = "\n\n".join(
