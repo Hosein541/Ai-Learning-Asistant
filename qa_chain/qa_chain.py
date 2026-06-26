@@ -392,7 +392,6 @@ def main( selected):
             documents=splits,
             embedding=embedding_function,
             persist_directory=persist_directory,
-            # collection_name = "my_collection"
         )
     retriever = vectorstore.as_retriever(search_kwargs={
         "k": 5,
