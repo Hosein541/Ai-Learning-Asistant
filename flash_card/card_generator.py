@@ -194,12 +194,3 @@ def execute(
             flashcards
         )
 
-    # return flashcards
-
-
-# llm = ChatGoogleGenerativeAI(
-#             model="gemini-3.1-flash-lite",
-#             google_api_key="AIzaSyDYuiX0iPytcXR4HopRwyT1kUoBOeWm_dM",
-#             temperature=0.15,
-#         )
-# execute(llm)
