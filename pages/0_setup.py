@@ -132,38 +132,6 @@ if st.button(
 
 
 
-# if st.button("Restart Session"):
-#     st.session_state["confirm_restart"] = True
-
-# if st.session_state.get("confirm_restart"):
-
-#     st.warning(
-#         "This will delete all current session data."
-#     )
-
-#     col1, col2 = st.columns(2)
-
-#     with col1:
-
-#         if st.button("Yes, Delete Everything"):
-
-#             reset_session()
-
-#             st.session_state["confirm_restart"] = False
-
-#             st.success(
-#                 "Session restarted."
-#             )
-
-#             st.rerun()
-
-#     with col2:
-
-#         if st.button("Cancel"):
-
-#             st.session_state["confirm_restart"] = False
-
-#             st.rerun()
 def reset_session():
 
     folders = [
@@ -223,20 +191,3 @@ if st.session_state.get("confirm_restart"):
 
             st.rerun()
 
-# # دکمه ریستارت
-# if st.button("Restart Session"):
-#     st.session_state["confirm_restart"] = True
-
-# if st.session_state.get("confirm_restart"):
-#     st.warning("This will delete all current session data.")
-#     col1, col2 = st.columns(2)
-#     with col1:
-#         if st.button("Yes, Delete Everything"):
-#             # به جای حذف فوری، پرچم می‌گذاریم و ریلود می‌کنیم
-#             st.session_state["do_reset"] = True
-#             st.session_state["confirm_restart"] = False
-#             st.rerun()
-#     with col2:
-#         if st.button("Cancel"):
-#             st.session_state["confirm_restart"] = False
-#             st.rerun()
