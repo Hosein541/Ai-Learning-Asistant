@@ -3,22 +3,12 @@ from pathlib import Path
 import json
 
 
-# IMAGE_TAG = "<!-- image -->"
-
-# CAPTION_PATTERN = re.compile(
-#     r"^(?:fig(?:ure)?\.?\s*\d+[\.:]?\s*.+)$",
-#     re.IGNORECASE
-# )
 
 
 def extract_figure_captions(markdown_text: str):
 
     IMAGE_TAG = "<!-- image -->"
 
-    # CAPTION_PATTERN = re.compile(
-        # r"^(?:fig(?:ure)?\.?\s*\d+[\.:]?\s*.+)$",
-        # re.IGNORECASE
-    # )
 
     CAPTION_PATTERN = re.compile(
         r"^(fig(?:ure)?\.?\s+[A-Za-z0-9\-\.]+.*)$",
@@ -38,7 +28,6 @@ def extract_figure_captions(markdown_text: str):
 
         caption = None
 
-        # 3 خط قبل
         for offset in range(1, 4):
 
             pos = idx - offset
@@ -53,7 +42,6 @@ def extract_figure_captions(markdown_text: str):
                 caption = candidate
                 break
 
-        # 3 خط بعد
         if caption is None:
 
             for offset in range(1, 4):
@@ -81,16 +69,7 @@ def extract_figure_captions(markdown_text: str):
 
     return figures
 
-# md_text = Path("output1\\2\\text.md").read_text(
-#     encoding="utf-8"
-# )
 
-# figures = extract_figure_captions(md_text)
-
-# for fig in figures:
-#     print(fig)
-#     print()
-import json
 def process_output_folder(output_dir):
 
     # output_dir = Path("output")
